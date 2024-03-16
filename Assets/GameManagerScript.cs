@@ -9,6 +9,8 @@ public class GameManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //renderer.sortingLayerName = sortingLayerName;
+        //renderer.sortingOrder = sortingOrder;
     }
 
     // Update is called once per frame
