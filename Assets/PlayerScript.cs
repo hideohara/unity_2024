@@ -13,6 +13,8 @@ public class PlayerScript : MonoBehaviour
 
     private int bulletTimer = 0;
 
+    private bool gameOverFlag = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +25,7 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManagerScript.gameOverFlag == true)
+        if (gameOverFlag == true)
         {
             return;
         }
@@ -80,10 +82,17 @@ public class PlayerScript : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            Debug.Log("GameOver"); // ログを表示する
+            //Debug.Log("GameOver"); // ログを表示する
 
             //GameManagerScript.gameScore = 0;
-            GameManagerScript.gameOverFlag = true; ;
+            //GameManagerScript.gameOverFlag = true;
+
+            gameOverFlag = true;
         }
+    }
+
+    public bool GetGameOverFlag()
+    {
+        return gameOverFlag;
     }
 }

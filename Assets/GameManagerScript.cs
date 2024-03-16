@@ -9,13 +9,13 @@ public class GameManagerScript : MonoBehaviour
     public GameObject enemy;
     private int gameTime = 0;
     public static int gameScore = 0;
-    public static bool gameOverFlag = false;
+    //public static bool gameOverFlag = false;
     public TextMeshProUGUI scoreText;
     public GameObject gameOverText;
     public GameObject enterText;
 
-    //GameObject unitychan; //Unityちゃんそのものが入る変数
-    //PlayerScript script; //UnityChanScriptが入る変数
+    private GameObject player; // Unityちゃんそのものが入る変数
+    private PlayerScript playerScript; // UnityChanScriptが入る変数
 
     // Start is called before the first frame update
     void Start()
@@ -25,17 +25,18 @@ public class GameManagerScript : MonoBehaviour
         Application.targetFrameRate = 60;
 
         gameScore = 0;
-        gameOverFlag = false;
+        //gameOverFlag = false;
 
-    //unitychan = GameObject.Find("unitychan"); //Unityちゃんをオブジェクトの名前から取得して変数に格納する
-    //script = unitychan.GetComponent<PlayerScript>(); //unitychanの中にあるUnityChanScriptを取得して変数に格納する
+        player = GameObject.Find("Player"); //Unityちゃんをオブジェクトの名前から取得して変数に格納する
+        playerScript = player.GetComponent<PlayerScript>(); //unitychanの中にあるUnityChanScriptを取得して変数に格納する
 
-}
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (gameOverFlag == true)
+        //if (gameOverFlag == true)
+        if (playerScript.GetGameOverFlag() == true)
         {
             gameOverText.SetActive(true);
             enterText.SetActive(true);

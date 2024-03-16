@@ -5,9 +5,17 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
     private float xSpeed=0;
+
+    private GameObject player; // Unityちゃんそのものが入る変数
+    private PlayerScript playerScript; // UnityChanScriptが入る変数
+
+
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player"); //Unityちゃんをオブジェクトの名前から取得して変数に格納する
+        playerScript = player.GetComponent<PlayerScript>(); //unitychanの中にあるUnityChanScriptを取得して変数に格納する
+
         int r = Random.Range(0, 2);
         if (r==0)
         {
@@ -26,7 +34,7 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManagerScript.gameOverFlag == true)
+        if (playerScript.GetGameOverFlag() == true)
         {
             return;
         }

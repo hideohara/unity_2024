@@ -17,7 +17,7 @@ public class BulletScript : MonoBehaviour
     {
         transform.position += new Vector3(0, 0, 0.2f);
 
-        if (transform.position.z > 20)
+        if (transform.position.z > 30)
         {
             Destroy(this.gameObject);
         }
@@ -29,7 +29,7 @@ public class BulletScript : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            Debug.Log("Hit"); // ログを表示する
+            //Debug.Log("Hit"); // ログを表示する
             Destroy(this.gameObject);
             Destroy(other.gameObject);
 
