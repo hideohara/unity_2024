@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     public GameObject bullet;
+    private int bulletTimer = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -29,5 +30,26 @@ public class PlayerScript : MonoBehaviour
                 transform.position += new Vector3(-0.05f, 0, 0);
             }
         }
+
+        if (bulletTimer == 0)
+        {
+            if (Input.GetKey(KeyCode.Space))
+            {
+                Vector3 position = transform.position;
+                position.y += 0.8f;
+
+                Instantiate(bullet, position, Quaternion.identity);
+                bulletTimer = 1;
+            }
+        }
+        else
+        {
+            bulletTimer++;
+            if (bulletTimer > 20)
+            { 
+                bulletTimer = 0;
+            }
+        }
+
     }
 }
