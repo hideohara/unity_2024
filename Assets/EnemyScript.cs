@@ -26,7 +26,13 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManagerScript.gameOverFlag == true)
+        {
+            return;
+        }
+
         transform.position += new Vector3(xSpeed, 0, -0.1f);
+
         if (transform.position.x>4)
         {
             xSpeed = -0.05f;

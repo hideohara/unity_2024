@@ -34,6 +34,8 @@ public class BulletScript : MonoBehaviour
             Destroy(other.gameObject);
 
             GameManagerScript.gameScore += 1;
+            //GameManagerScript.AddScore();
+
         }
     }
 }

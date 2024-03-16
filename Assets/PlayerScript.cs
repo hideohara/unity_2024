@@ -6,19 +6,28 @@ public class PlayerScript : MonoBehaviour
 {
     public GameObject bullet;
     public Animator animator;
+    public GameObject gameManager;
     //public Rigidbody rb;
+
+    //GameManagerScript gameManagerScript;
 
     private int bulletTimer = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        //bullet = GameObject.Find("Bullet");
+        //gameManager = GameObject.Find("GameManager");
+        //gameManagerScript = gameManager.GetComponent<GameManagerScript>;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (GameManagerScript.gameOverFlag == true)
+        {
+            return;
+        }
+
         if (Input.GetKey(KeyCode.RightArrow))
         {
             if (transform.position.x < 4)
@@ -73,7 +82,8 @@ public class PlayerScript : MonoBehaviour
         {
             Debug.Log("GameOver"); // ƒƒO‚ð•\Ž¦‚·‚é
 
-            GameManagerScript.gameScore = 0;
+            //GameManagerScript.gameScore = 0;
+            GameManagerScript.gameOverFlag = true; ;
         }
     }
 }
