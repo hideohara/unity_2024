@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     public GameObject bullet;
+    public Animator animator;
+
     private int bulletTimer = 0;
 
     // Start is called before the first frame update
@@ -22,13 +24,19 @@ public class PlayerScript : MonoBehaviour
             {
                 transform.position += new Vector3(0.05f, 0, 0);
             }
+            animator.SetBool("Move", true);
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow))
         {
             if (transform.position.x > -4)
             {
                 transform.position += new Vector3(-0.05f, 0, 0);
             }
+            animator.SetBool("Move", true);
+        }
+        else 
+        {
+            animator.SetBool("Move", false);
         }
 
         if (bulletTimer == 0)

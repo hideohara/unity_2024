@@ -18,8 +18,8 @@ public class GameManagerScript : MonoBehaviour
     {
         gameTime++;
         int max;
-        max = 100 - gameTime / 10;
-        if (max < 50) max = 50;
+        max = 100 - gameTime / 100;
+        if (max < 20) max = 20;
         int r = Random.Range(0, max);
         if (r == 0)
         {
