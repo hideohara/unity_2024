@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour
 {
@@ -19,10 +20,17 @@ public class GameManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //unitychan = GameObject.Find("unitychan"); //Unityちゃんをオブジェクトの名前から取得して変数に格納する
-        //script = unitychan.GetComponent<PlayerScript>(); //unitychanの中にあるUnityChanScriptを取得して変数に格納する
+        Screen.SetResolution(1920, 1080, false);
+       
+        Application.targetFrameRate = 60;
 
-    }
+        gameScore = 0;
+        gameOverFlag = false;
+
+    //unitychan = GameObject.Find("unitychan"); //Unityちゃんをオブジェクトの名前から取得して変数に格納する
+    //script = unitychan.GetComponent<PlayerScript>(); //unitychanの中にあるUnityChanScriptを取得して変数に格納する
+
+}
 
     // Update is called once per frame
     void Update()
@@ -31,6 +39,12 @@ public class GameManagerScript : MonoBehaviour
         {
             gameOverText.SetActive(true);
             enterText.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                SceneManager.LoadScene("TitleScene");
+            }
+
             return;
         }
 
