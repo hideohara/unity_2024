@@ -6,16 +6,17 @@ public class EnemyScript : MonoBehaviour
 {
     private float xSpeed=0;
 
-    private GameObject player; // Unityちゃんそのものが入る変数
-    private PlayerScript playerScript; // UnityChanScriptが入る変数
-
+    private GameObject gameManager; // オブジェクトが入る変数
+    private GameManagerScript gameManagerScript; // Scriptが入る変数
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Player"); //Unityちゃんをオブジェクトの名前から取得して変数に格納する
-        playerScript = player.GetComponent<PlayerScript>(); //unitychanの中にあるUnityChanScriptを取得して変数に格納する
+        // ゲームマネージャーのスクリプトを探す
+        gameManager = GameObject.Find("GameManager"); // オブジェクトの名前から探す
+        gameManagerScript = gameManager.GetComponent<GameManagerScript>(); // Scriptを取得する
 
+        // 乱数で左右へ
         int r = Random.Range(0, 2);
         if (r==0)
         {
@@ -27,20 +28,21 @@ public class EnemyScript : MonoBehaviour
             xSpeed = -0.05f;
             transform.rotation = Quaternion.Euler(0, 180+20, 0);
         }
-
-//        transform.rotation = Quaternion.Euler(0, 180, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerScript.GetGameOverFlag() == true)
+        // ゲームオーバー
+        if (gameManagerScript.GetGameOverFlag() == true)
         {
             return;
         }
 
+        // 移動
         transform.position += new Vector3(xSpeed, 0, -0.1f);
 
+        // 左右で反転
         if (transform.position.x>4)
         {
             xSpeed = -0.05f;
@@ -52,6 +54,7 @@ public class EnemyScript : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 180 - 20, 0);
         }
 
+        // 手前で消滅
         if (transform.position.z < -2)
         {
             Destroy(this.gameObject);

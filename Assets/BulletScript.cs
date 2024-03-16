@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BulletScript : MonoBehaviour
 {
-    //public GameObject GM;
+    private GameObject gameManager; // GameObjectそのものが入る変数
+    private GameManagerScript gameManagerScript; // Scriptが入る変数
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        // ゲームマネージャーのスクリプトを探す
+        gameManager = GameObject.Find("GameManager"); // オブジェクトの名前から探す
+        gameManagerScript = gameManager.GetComponent<GameManagerScript>(); // Scriptを取得する
     }
 
     // Update is called once per frame
@@ -33,8 +37,7 @@ public class BulletScript : MonoBehaviour
             Destroy(this.gameObject);
             Destroy(other.gameObject);
 
-            GameManagerScript.gameScore += 1;
-            //GameManagerScript.AddScore();
+            gameManagerScript.AddScore();
 
         }
     }

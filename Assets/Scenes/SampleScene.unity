@@ -729,6 +729,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -7658894441757905344, guid: 412b92d4feeb9c548bfa98f62c4d1022, type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7658894441757905344, guid: 412b92d4feeb9c548bfa98f62c4d1022, type: 3}
+      propertyPath: m_Size.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7658894441757905344, guid: 412b92d4feeb9c548bfa98f62c4d1022, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -952,7 +960,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 8334983675222210141, guid: bea5f3b1a18f9c845b3b982b872da024, type: 3}
   animator: {fileID: 1976432430}
-  gameManager: {fileID: 1985632410}
 --- !u!95 &1976432430 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 9500000, guid: 412b92d4feeb9c548bfa98f62c4d1022, type: 3}

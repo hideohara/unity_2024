@@ -7,15 +7,14 @@ using UnityEngine.SceneManagement;
 public class GameManagerScript : MonoBehaviour
 {
     public GameObject enemy;
-    private int gameTime = 0;
-    public static int gameScore = 0;
-    //public static bool gameOverFlag = false;
+
     public TextMeshProUGUI scoreText;
     public GameObject gameOverText;
     public GameObject enterText;
 
-    private GameObject player; // Unityちゃんそのものが入る変数
-    private PlayerScript playerScript; // UnityChanScriptが入る変数
+    private int gameTime = 0;
+    private int gameScore = 0;
+    private bool gameOverFlag = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,23 +23,13 @@ public class GameManagerScript : MonoBehaviour
        
         Application.targetFrameRate = 60;
 
-        gameScore = 0;
-        //gameOverFlag = false;
-
-        player = GameObject.Find("Player"); //Unityちゃんをオブジェクトの名前から取得して変数に格納する
-        playerScript = player.GetComponent<PlayerScript>(); //unitychanの中にあるUnityChanScriptを取得して変数に格納する
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (gameOverFlag == true)
-        if (playerScript.GetGameOverFlag() == true)
+        if (gameOverFlag == true)
         {
-            gameOverText.SetActive(true);
-            enterText.SetActive(true);
-
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 SceneManager.LoadScene("TitleScene");
@@ -51,8 +40,8 @@ public class GameManagerScript : MonoBehaviour
 
         gameTime++;
         int max;
-        max = 100 - gameTime / 100;
-        if (max < 20) max = 20;
+        max = 50 - gameTime / 100;
+        //if (max < 20) max = 20;
         int r = Random.Range(0, max);
         if (r == 0)
         {
@@ -62,17 +51,24 @@ public class GameManagerScript : MonoBehaviour
 
         scoreText.text = "SCORE " + gameScore;
 
+
     }
 
-    //static public void AddScore()
-    //{
-    //    gameScore += 1;
-    //}
+    public void AddScore()
+    {
+        gameScore += 1;
+    }
 
-    //public void SetGameOver()
-    //{
-    //    gameOverFlag = true;
-    //    //gameOverText.SetActive(false);
-    //}
+    public void SetGameOverFlag()
+    {
+        gameOverFlag = true;
+        gameOverText.SetActive(true);
+        enterText.SetActive(true);
+    }
+
+    public bool GetGameOverFlag()
+    {
+        return gameOverFlag;
+    }
 
 }

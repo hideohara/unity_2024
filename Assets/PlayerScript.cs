@@ -6,26 +6,24 @@ public class PlayerScript : MonoBehaviour
 {
     public GameObject bullet;
     public Animator animator;
-    public GameObject gameManager;
-    //public Rigidbody rb;
-
-    //GameManagerScript gameManagerScript;
 
     private int bulletTimer = 0;
 
-    private bool gameOverFlag = false;
+    private GameObject gameManager; // オブジェクトが入る変数
+    private GameManagerScript gameManagerScript; // Scriptが入る変数
 
     // Start is called before the first frame update
     void Start()
     {
-        //gameManager = GameObject.Find("GameManager");
-        //gameManagerScript = gameManager.GetComponent<GameManagerScript>;
+        // ゲームマネージャーのスクリプトを探す
+        gameManager = GameObject.Find("GameManager"); // オブジェクトの名前から探す
+        gameManagerScript = gameManager.GetComponent<GameManagerScript>(); // Scriptを取得する
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (gameOverFlag == true)
+        if (gameManagerScript.GetGameOverFlag() == true)
         {
             return;
         }
@@ -84,15 +82,8 @@ public class PlayerScript : MonoBehaviour
         {
             //Debug.Log("GameOver"); // ログを表示する
 
-            //GameManagerScript.gameScore = 0;
-            //GameManagerScript.gameOverFlag = true;
-
-            gameOverFlag = true;
+            gameManagerScript.SetGameOverFlag();
         }
     }
 
-    public bool GetGameOverFlag()
-    {
-        return gameOverFlag;
-    }
 }
