@@ -6,6 +6,7 @@ public class PlayerScript : MonoBehaviour
 {
     public GameObject bullet;
     public Animator animator;
+    //public Rigidbody rb;
 
     private int bulletTimer = 0;
 
@@ -23,6 +24,7 @@ public class PlayerScript : MonoBehaviour
             if (transform.position.x < 4)
             {
                 transform.position += new Vector3(0.05f, 0, 0);
+                //rb.velocity = new Vector3(1, 0, 0);
             }
             animator.SetBool("Move", true);
         }
@@ -31,12 +33,14 @@ public class PlayerScript : MonoBehaviour
             if (transform.position.x > -4)
             {
                 transform.position += new Vector3(-0.05f, 0, 0);
+                //rb.velocity = new Vector3(-1, 0, 0);
             }
             animator.SetBool("Move", true);
         }
         else 
         {
             animator.SetBool("Move", false);
+            //rb.velocity = new Vector3(0, 0, 0);
         }
 
         if (bulletTimer == 0)
