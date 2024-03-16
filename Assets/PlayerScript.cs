@@ -37,6 +37,7 @@ public class PlayerScript : MonoBehaviour
             {
                 Vector3 position = transform.position;
                 position.y += 0.8f;
+                position.z += 0.5f;
 
                 Instantiate(bullet, position, Quaternion.identity);
                 bulletTimer = 1;
