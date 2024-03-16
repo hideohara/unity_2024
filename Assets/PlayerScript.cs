@@ -12,7 +12,7 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //bullet = GameObject.Find("Bullet");
     }
 
     // Update is called once per frame
@@ -60,5 +60,16 @@ public class PlayerScript : MonoBehaviour
             }
         }
 
+    }
+
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            Debug.Log("GameOver"); // ÉçÉOÇï\é¶Ç∑ÇÈ
+
+            GameManagerScript.gameScore = 0;
+        }
     }
 }

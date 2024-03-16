@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
+    //public GameObject GM;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,8 @@ public class BulletScript : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+
     }
 
     void OnCollisionEnter(Collision other)
@@ -28,6 +32,8 @@ public class BulletScript : MonoBehaviour
             Debug.Log("Hit"); // ÉçÉOÇï\é¶Ç∑ÇÈ
             Destroy(this.gameObject);
             Destroy(other.gameObject);
+
+            GameManagerScript.gameScore += 1;
         }
     }
 }

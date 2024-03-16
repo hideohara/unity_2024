@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManagerScript : MonoBehaviour
 {
-    public GameObject obj;
+    public GameObject enemy;
     private int gameTime = 0;
+    static public int gameScore = 0;
+    public TextMeshProUGUI scoreText;
 
     // Start is called before the first frame update
     void Start()
     {
-        gameTime = 0;
     }
 
     // Update is called once per frame
@@ -24,7 +26,14 @@ public class GameManagerScript : MonoBehaviour
         if (r == 0)
         {
             float x = Random.Range(-3.0f, 3.0f);
-            Instantiate(obj, new Vector3(x, 0.0f, 15), Quaternion.identity);
+            Instantiate(enemy, new Vector3(x, 0.0f, 15), Quaternion.identity);
         }
+
+        scoreText.text = "SCORE " + gameScore;
     }
+
+    //public void AddScore()
+    //{
+    //    gameScore++;
+    //}
 }
