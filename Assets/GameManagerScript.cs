@@ -11,6 +11,8 @@ public class GameManagerScript : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public GameObject gameOverText;
     public GameObject enterText;
+    public AudioSource hitAudioSource;
+    public AudioSource gameOverAudioSource;
 
     private int gameTime = 0;
     private int gameScore = 0;
@@ -54,9 +56,10 @@ public class GameManagerScript : MonoBehaviour
 
     }
 
-    public void AddScore()
+    public void Hit()
     {
         gameScore += 1;
+        hitAudioSource.Play();
     }
 
     public void SetGameOverFlag()
@@ -64,6 +67,7 @@ public class GameManagerScript : MonoBehaviour
         gameOverFlag = true;
         gameOverText.SetActive(true);
         enterText.SetActive(true);
+        gameOverAudioSource.Play();
     }
 
     public bool GetGameOverFlag()

@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class TitleScript : MonoBehaviour
 {
+    public GameObject enterText;
+    private int timer = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +20,16 @@ public class TitleScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
             SceneManager.LoadScene("SampleScene");
+        }
+
+        timer++;
+        if (timer % 100 > 50)
+        {
+            enterText.SetActive(false);
+        }
+        else
+        {
+            enterText.SetActive(true);
         }
     }
 }

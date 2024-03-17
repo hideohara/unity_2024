@@ -12,12 +12,14 @@ public class PlayerScript : MonoBehaviour
     private GameObject gameManager; // オブジェクトが入る変数
     private GameManagerScript gameManagerScript; // Scriptが入る変数
 
+
     // Start is called before the first frame update
     void Start()
     {
         // ゲームマネージャーのスクリプトを探す
         gameManager = GameObject.Find("GameManager"); // オブジェクトの名前から探す
         gameManagerScript = gameManager.GetComponent<GameManagerScript>(); // Scriptを取得する
+
     }
 
     // Update is called once per frame
