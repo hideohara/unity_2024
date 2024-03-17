@@ -13,6 +13,7 @@ public class GameManagerScript : MonoBehaviour
     public GameObject enterText;
     public AudioSource hitAudioSource;
     public AudioSource gameOverAudioSource;
+    public GameObject particle;
 
     private int gameTime = 0;
     private int gameScore = 0;
@@ -56,10 +57,12 @@ public class GameManagerScript : MonoBehaviour
 
     }
 
-    public void Hit()
+    public void Hit(Vector3 position)
     {
         gameScore += 1;
         hitAudioSource.Play();
+
+        Instantiate(particle, position, Quaternion.identity);
     }
 
     public void SetGameOverFlag()

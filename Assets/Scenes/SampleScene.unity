@@ -1019,6 +1019,7 @@ MonoBehaviour:
   enterText: {fileID: 2001241813}
   hitAudioSource: {fileID: 1985632414}
   gameOverAudioSource: {fileID: 1985632415}
+  particle: {fileID: 6802492528284937713, guid: ee3b63a1d7ed28d469003dd8c58a6217, type: 3}
 --- !u!4 &1985632412
 Transform:
   m_ObjectHideFlags: 0
